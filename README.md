@@ -9,10 +9,14 @@
 
 确认python环境已经具备如下的库
 
-|库名|库名|库名|库名|
-|---|---|
-|requests|bs4|webbrowser|tensorflow|
-|pillow|numpy|tqdm|json|
+> *  requests
+> *  bs4
+> *  webbrowser
+> *  tensorflow
+> *  pillow (python2.x PIL)
+> *  numpy
+> *  tqdm
+> *  json
 
 
 ## 优先体验
