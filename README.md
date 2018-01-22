@@ -45,8 +45,8 @@ followers_data #打印每一位粉丝的详细信息，字段很多
 ```
 
 
-### 扩展
-主要用Unofficial-Zhihu-API进行自动登录，登陆之后获取一个包含登陆信息的requests会话进行自定义爬虫。
+## 扩展
+主要用Unofficial-Zhihu-API进行自动登录，登陆之后获取一个包含登陆信息的requests会话进行 **自定义爬虫。**
 ```python
 cd ../Unofficial-Zhihu-API/
 ipython
@@ -58,5 +58,5 @@ session==s.getSession()
 ```
 
 
-### 从零开始训练验证码识别
+## 从零开始训练验证码识别
 如果你需要学习或者体验 **如何在缺少知乎已标记验证码的情况下，训练验证码识别** ，请留言或者联系我txgyswh@163.com，我以后可能会在我的博客上补充相关的教程，但不是现在，现在还是比较忙的-_-# 
