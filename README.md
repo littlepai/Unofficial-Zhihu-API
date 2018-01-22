@@ -4,12 +4,15 @@
 深度学习模型自动识别验证码，python爬虫库自动管理会话，通过简单易用的API，实现知乎数据的爬取
 如果大家愿意向我推荐更多的功能请发送信息到txgyswh@163.com,我会添加更多的功能.
 
-## 环境
-建议使用anaconda3-5.0.1环境，可点击 [下载](https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/)安装anaconda，python版本建议使用python3.6，不会安装的请自行百度,并用pip install -r requirements.txt安装依赖的库
+## 获取代码
+可点击 [下载](https://github.com/littlepai/Unofficial-Zhihu-API/archive/master.zip) 获取项目代码，并解压获得 **Unofficial-Zhihu-API** 文件夹
 
-## 获取
-可点击 [下载](https://github.com/littlepai/Unofficial-Zhihu-API/archive/master.zip) 获取项目代码，并解压获得Unofficial-Zhihu-API文件夹
-
+## 环境安装
+建议使用anaconda3-5.0.1环境，可点击 [下载](https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/)安装anaconda，python版本**建议**使用python3.6
+安装anaconda（不会安装请自行百度）之后，打开相应的命令行窗口，按照下列步骤安装python环境
+> * conda create -n uf_zhihu python=3.6 jupyter
+> * cd ../Unofficial-Zhihu-API/
+> * activate uf_zhihu
 
 ## 优先体验
 ### 验证码自动识别测试
