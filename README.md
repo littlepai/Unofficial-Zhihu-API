@@ -3,6 +3,7 @@
 ## 简介
 深度学习模型自动识别验证码，python爬虫库自动管理会话，通过简单易用的API，实现知乎数据的爬取
 如果大家愿意向我推荐更多的功能请发送信息到txgyswh@163.com,我会添加更多的功能.
+博客地址: [深度学习与爬虫实例教学](http://www.cnblogs.com/paiandlu/p/8462657.html)
 
 ## 获取代码
 可点击 [下载](https://github.com/littlepai/Unofficial-Zhihu-API/archive/master.zip) 获取项目代码，并解压获得 **Unofficial-Zhihu-API** 文件夹
@@ -62,4 +63,4 @@ session==s.getSession()
 
 
 ## 从零开始训练验证码识别
-如果你需要学习或者体验 **如何在缺少知乎已标记验证码的情况下，训练验证码识别** ，请留言或者联系我txgyswh@163.com，我以后可能会在我的博客上补充相关的教程，但不是现在，现在还是比较忙的-_-# 
+如果你需要学习或者体验 **如何在缺少知乎已标记验证码的情况下，训练验证码识别** ，请访问博客地址: [深度学习与爬虫实例教学](http://www.cnblogs.com/paiandlu/p/8462657.html)
