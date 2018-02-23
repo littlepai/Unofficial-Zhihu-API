@@ -3,3 +3,9 @@ cookie
 */__pycache__/
 mark
 *.html
+data/train
+data/val
+data/zhihu_train
+data/zhihu_val
+log
+zhihu_log
