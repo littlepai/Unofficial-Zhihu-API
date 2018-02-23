@@ -51,14 +51,17 @@ def load_img_path(images_path):
 
 # 生成模拟数据，模拟知乎的验证码，只有这样才能获得大量训练数据
 def gen_simulated_img(images_path, num_imgs=10000, captcha_num=4, width=150, height=60, font_sizes=range(45,50)):
+    if not os.path.exists(images_path):
+        os.makedirs(images_path)
     file_names = load_img_path(images_path)
-    generator = ImageCaptcha(width=width, height=height, font_sizes=font_sizes)
     if file_names.size:
         file_names=[os.path.basename(file) for file in file_names]
         file_names.sort(key=lambda x: x.split('_')[0])
         nextid=int(os.path.basename(file_names[-1]).split('_')[0])+1
     else:
         nextid=0
+
+    generator = ImageCaptcha(width=width, height=height, font_sizes=font_sizes)
     for i in range(num_imgs):
         labels=''.join([choice(characters) for i in range(captcha_num)])
         generator.generate_image(labels).save("%s/%06d_%s.png" %(images_path, nextid, labels.lower()))
