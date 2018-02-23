@@ -5,6 +5,7 @@ import os
 import string
 from pai_image import ImageCaptcha
 from random import choice
+from tqdm import tqdm
 
 characters = string.digits + string.ascii_lowercase + string.ascii_uppercase
 # 随机分割训练集和测试集
@@ -62,7 +63,7 @@ def gen_simulated_img(images_path, num_imgs=10000, captcha_num=4, width=150, hei
         nextid=0
 
     generator = ImageCaptcha(width=width, height=height, font_sizes=font_sizes)
-    for i in range(num_imgs):
+    for i in tqdm(range(num_imgs), ncols=50):
         labels=''.join([choice(characters) for i in range(captcha_num)])
         generator.generate_image(labels).save("%s/%06d_%s.png" %(images_path, nextid, labels.lower()))
         nextid += 1
