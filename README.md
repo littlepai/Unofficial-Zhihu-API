@@ -14,6 +14,7 @@
 > * conda create -n uf_zhihu python=3.6 jupyter
 > * cd ../Unofficial-Zhihu-API/
 > * activate uf_zhihu
+> * pip install -r requirements.txt
 
 ## 优先体验
 ### 验证码自动识别测试
