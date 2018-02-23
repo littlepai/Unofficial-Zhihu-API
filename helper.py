@@ -52,6 +52,9 @@ def load_img_path(images_path):
 
 # 生成模拟数据，模拟知乎的验证码，只有这样才能获得大量训练数据
 def gen_simulated_img(images_path, num_imgs=10000, captcha_num=4, width=150, height=60, font_sizes=range(45,50)):
+    '''
+    默认只需要传入生成图片的路径即可,如果路径不存在则新建,如果存在则追加图片(用户可以自行删除已有的图片)
+    '''
     if not os.path.exists(images_path):
         os.makedirs(images_path)
     file_names = load_img_path(images_path)

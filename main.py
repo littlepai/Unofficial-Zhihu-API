@@ -42,7 +42,7 @@ def train(train_dir=None, val_dir=None, mode='train'):
 
     with tf.device('/cpu:0'):
         # ConfigProto 用于配置Session
-        # 如果你指定的设备不存在，允许TF自动分配设备
+        # allow_soft_placement=True 意思是如果你指定的设备不存在，允许TF自动分配设备
         config = tf.ConfigProto(allow_soft_placement=True)
         with tf.Session(config=config) as sess:
             sess.run(tf.global_variables_initializer())

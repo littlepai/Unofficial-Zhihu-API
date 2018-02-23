@@ -6,8 +6,8 @@ import tensorflow as tf
 #import cv2
 from PIL import Image
 
-# +-* + () + 10 digit + blank + space
-num_classes = 38#3 + 2 + 10 + 1 + 1
+
+num_classes = 38#26个字母+10个数字+1个" "+1个""
 
 maxPrintLen = 100
 
@@ -63,24 +63,26 @@ decode_maps[SPACE_INDEX] = SPACE_TOKEN
 class DataIterator:
     def __init__(self, data_dir):
         self.image = [] # 所有的图片都加载进内存待等待提取，加载进内存当然是为了速度了
-        self.labels = []
+        self.labels = [] # 与self.image对应的label
+        # os.walk方法可以遍历文件夹,具体请查看相关文档,这里会把图片目录下面的所有图片信息加载到内存里面
         for root, sub_folder, file_list in os.walk(data_dir):
+            # root 是根目录, file_list是根目录下的文件名列表
             for file_path in file_list:
-                image_name = os.path.join(root, file_path)
+                image_name = os.path.join(root, file_path) # 生成image文件名绝对路径
                 # im = np.array(Image.open(image_name)).astype(np.float32)/255.
+                # 打开文件并转化成numpy的array数据类型
                 im = np.array(Image.open(image_name).convert("L")).astype(np.float32)/255.
                 # im = np.array(Image.open(image_name).convert("L").point(lambda x: 0 if x < 150 else 1)).astype(np.float32)
                 # im = cv2.imread(image_name, 0).astype(np.float32)/255.
                 # resize to same height, different width will consume time on padding
                 # im = cv2.resize(im, (image_width, image_height))
+                # 对数据进行重塑型,
                 im = np.reshape(im, [FLAGS.image_height, FLAGS.image_width, FLAGS.image_channel])
-                self.image.append(im)
-
-                # image is named as /.../<folder>/00000_abcd.png
+                self.image.append(im) # 加进列表,伴随整个运行过程,方便以后能快速读取
                 code = image_name.split(os.sep)[-1].split('_')[1].split('.')[0] # code 是验证码
                 code = [SPACE_INDEX if code == SPACE_TOKEN else encode_maps[c] for c in list(code)] # code转成[1,2,3,4] 字码列表
                 self.labels.append(code)
-    
+
     # 使size方法变成属性，调用的时候self.size即可，不用调用self.size() #这里体现不出@property的优点
     @property
     def size(self):
