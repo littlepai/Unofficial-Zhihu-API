@@ -18,7 +18,7 @@
 
 如果你的是windows用户，又没有装vs或者vs版本不对，可能会报如下错误
 ![](http://images.cnblogs.com/cnblogs_com/paiandlu/1165432/o_pip_tensorflow_error.bmp)
-**解决方法：**用 conda install tensorflow==1.2.1 安装tensorflow完毕之后再来运行python setup.py install即可
+**解决方法：** 用 conda install tensorflow==1.2.1 安装tensorflow完毕之后再来运行python setup.py install即可
 
 安装完毕之后再python的site-packages目录下生成ufzh项目（之所以做成一整个包是为了方便以后整合到别的项目）
 
