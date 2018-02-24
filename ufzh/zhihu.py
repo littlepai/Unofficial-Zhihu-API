@@ -219,7 +219,7 @@ class Zhihu():
                 print("登录成功")
                 self.__is_login = True
                 print("=" * 50)
-                print("在同目录下生成cookie文件：%s, 下次登陆优先使用cookie登陆，\n如果不想优先使用cookie登陆可删除cookie文件" % self.cookieFile)
+                print("在工作目录下生成cookie文件：%s, 下次登陆优先使用cookie登陆，\n如果不想优先使用cookie登陆可删除cookie文件" % self.cookieFile)
                 self.__saveCookie()
                 self.__is_login=True
                 return True

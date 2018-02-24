@@ -1,0 +1,11 @@
+Metadata-Version: 1.0
+Name: ufzh
+Version: 1.0.0
+Summary: 深度学习实现知乎验证码识别
+Home-page: UNKNOWN
+Author: littlepai
+Author-email: txgyswh@163.com
+License: MIT Licence
+Description: 深度学习实现知乎验证码识别
+Keywords: pip,ufzh
+Platform: any
