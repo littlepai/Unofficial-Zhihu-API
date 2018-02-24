@@ -10,3 +10,8 @@ train_workspace/data/zhihu_train
 train_workspace/data/zhihu_val
 train_workspace/zhihu_log
 *.html
+
+
+dist
+build
+*.egg-info

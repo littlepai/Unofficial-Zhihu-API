@@ -14,22 +14,24 @@
 > * conda create -n uf_zhihu python=3.6 jupyter
 > * cd ../Unofficial-Zhihu-API/
 > * activate uf_zhihu
-> * pip install -r requirements.txt
+> * python setup.py install
+
+安装完毕之后再python的site-packages目录下生成ufzh项目（之所以做成一整个包是为了方便以后整合到别的项目）
 
 ## 优先体验
 ### 验证码自动识别测试
 ```python
-cd ../Unofficial-Zhihu-API/
+cd 到  Unofficial-Zhihu-API/train_workspace
 ipython
-import exsample.mark_captcha as exm
-exm.mark()
+import helper
+helper.mark()
 ```
 
 ### 调用API获取数据
 ```python
-cd ../Unofficial-Zhihu-API/
+
 ipython
-import zhihu
+from ufzh import zhihu
 s=zhihu.Search()
 s.relatedQidByKWord
 java_qs=s.relatedQidByKWord("java") # 查询java相关的话题
@@ -53,12 +55,11 @@ followers_data #打印每一位粉丝的详细信息，字段很多
 ## 扩展
 主要用Unofficial-Zhihu-API进行自动登录，登陆之后获取一个包含登陆信息的requests会话进行 **自定义爬虫。**
 ```python
-cd ../Unofficial-Zhihu-API/
 ipython
-import zhihu
+from ufzh import zhihu
 s=zhihu.Zhihu()
 #session是一个requests库的一个会话，使用方法请参考官方教程
-session==s.getSession()
+session=s.getSession()
 
 ```
 
