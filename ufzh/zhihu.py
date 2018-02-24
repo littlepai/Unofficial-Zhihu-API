@@ -16,8 +16,12 @@ import tensorflow as tf
 from PIL import Image
 import numpy as np
 
-model = orcmodel.LSTMOCR('infer')
-model.build_graph()
+try:
+    type (eval('model'))
+except:
+    model = orcmodel.LSTMOCR('infer')
+    model.build_graph()
+
 config = tf.ConfigProto(allow_soft_placement=True)
 checkpoint_dir=os.path.join(os.path.dirname(os.path.abspath(__file__)), "checkpoint")
 

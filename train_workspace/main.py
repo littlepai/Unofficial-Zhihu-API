@@ -9,8 +9,8 @@ from PIL import Image
 import numpy as np
 import tensorflow as tf
 
-import orcmodel
-import utils
+from ufzh import orcmodel
+from ufzh import utils
 import helper
 
 FLAGS = utils.FLAGS

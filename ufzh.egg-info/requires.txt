@@ -1,6 +1,0 @@
-requests
-bs4
-tensorflow==1.2.1
-pillow
-numpy
-tqdm
