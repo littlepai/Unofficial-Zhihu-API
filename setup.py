@@ -24,7 +24,7 @@ setup(
 
     packages = find_packages(),
     include_package_data = True,
-    data_files=[('checkpoint', ['ufzh/checkpoint/checkpoint', 'ufzh/checkpoint/ocr-model-22001.data-00000-of-00001', 'ufzh/checkpoint/ocr-model-22001.index','ufzh/checkpoint/ocr-model-22001.meta'])],
+    data_files=[('ufzh/checkpoint', ['ufzh/checkpoint/checkpoint', 'ufzh/checkpoint/ocr-model-22001.data-00000-of-00001', 'ufzh/checkpoint/ocr-model-22001.index','ufzh/checkpoint/ocr-model-22001.meta'])],
     platforms = "any",
     install_requires = ['requests', "bs4", 'tensorflow==1.2.1', 'pillow', 'numpy', 'tqdm']
 )
