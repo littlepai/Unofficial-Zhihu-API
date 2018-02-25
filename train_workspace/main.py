@@ -9,9 +9,8 @@ from PIL import Image
 import numpy as np
 import tensorflow as tf
 
-from ufzh import orcmodel
-from ufzh import utils
-import helper
+import orcmodel
+import utils
 
 FLAGS = utils.FLAGS
 
@@ -140,76 +139,6 @@ def train(train_dir=None, val_dir=None, mode='train'):
                                          batch_cost, time.time() - start_time, lr))
 
             
-def infer(img_path, mode='infer'):
-    imgList = helper.load_img_path(img_path)
-    print(imgList[:5])
-
-    model = orcmodel.LSTMOCR(mode) # 生成模型类
-    model.build_graph() # 建立模型
-
-    total_steps = math.ceil(len(imgList) / FLAGS.batch_size) #获得最小批总批次
-
-    config = tf.ConfigProto(allow_soft_placement=True)
-    with tf.Session(config=config) as sess:
-        sess.run(tf.global_variables_initializer()) # 初始化
-
-        saver = tf.train.Saver(tf.global_variables(), max_to_keep=100) # saver 获取变量
-        ckpt = tf.train.latest_checkpoint(FLAGS.checkpoint_dir)
-        if ckpt:
-            saver.restore(sess, ckpt) # 恢复变量
-            print('restore from ckpt{}'.format(ckpt))
-        else:
-            print('cannot restore')
-
-        decoded_expression = []
-        true_expression=[]
-        for curr_step in range(total_steps):
-
-            imgs_input = []
-            seq_len_input = []
-            for img in imgList[curr_step * FLAGS.batch_size: (curr_step + 1) * FLAGS.batch_size]:
-                # 准备预测数据
-                true_expression.append(img.split('/')[-1].split('_')[-1].split('.')[0])
-                im = np.array(Image.open(img).convert("L")).astype(np.float32)/255.
-                im = np.reshape(im, [FLAGS.image_height, FLAGS.image_width, FLAGS.image_channel])
-
-                def get_input_lens(seqs):
-                    length = np.array([FLAGS.max_stepsize for _ in seqs], dtype=np.int64)
-
-                    return seqs, length
-
-                inp, seq_len = get_input_lens(np.array([im]))
-                imgs_input.append(im)
-                seq_len_input.append(seq_len)
-
-            imgs_input = np.asarray(imgs_input)
-            seq_len_input = np.asarray(seq_len_input)
-            seq_len_input = np.reshape(seq_len_input, [-1])
-
-            feed = {model.inputs: imgs_input,
-                    model.seq_len: seq_len_input}
-
-            # 运行预测，获得解码结果
-            dense_decoded = sess.run(model.dense_decoded, feed)
-            
-            # 解析对应的验证码
-            for item in dense_decoded:
-                expression = ''
-
-                for i in item:
-                    if i == -1:
-                        expression += ''
-                    else:
-                        expression += utils.decode_maps[i]
-
-                decoded_expression.append(expression)
-        
-        # 记录预测结果
-        with open('./result.txt', 'w') as f:
-            f.write("%-6s %-6s %-6s" % ("pred", "true", "is_right") + '\n')
-            for code, true_code in zip(decoded_expression, true_expression):
-                f.write("%-6s %-6s %-d" % (code, true_code, code==true_code) + '\n')
-
 #main 一定要有参数，因为tf在调用的时候传入sys.argv
 def main(_):
     if FLAGS.num_gpus == 0:
@@ -222,10 +151,6 @@ def main(_):
     with tf.device(dev):
         if FLAGS.mode == 'train':
             train(FLAGS.train_dir, FLAGS.val_dir, FLAGS.mode)
-
-        elif FLAGS.mode == 'infer':
-            infer(FLAGS.infer_dir, FLAGS.mode)
-
 
 if __name__ == '__main__':
     tf.logging.set_verbosity(tf.logging.INFO) # 初始化日志等级
