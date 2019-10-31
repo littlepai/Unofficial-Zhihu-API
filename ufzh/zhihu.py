@@ -151,7 +151,7 @@ class Zhihu():
     cookieFile = os.path.join(sys.path[0], "cookie")
 
     def __init__(self, username=None, password=None):
-        if sys.path[0]: os.chdir(sys.path[0])  # 设置脚本所在目录为当前工作目录
+        # if sys.path[0]: os.chdir(sys.path[0])  # 设置脚本所在目录为当前工作目录
 
         # 恢复权重
         self.__sess = self.__restoreSess(checkpoint_dir)
@@ -160,7 +160,7 @@ class Zhihu():
         self.__session = requests.Session()
         self.__session.headers = self.headers #为了伪装，设置headers
 
-        self.login(username, password)
+        # self.login(username, password)
 
     # 恢复权重
     def __restoreSess(self, checkpoint=checkpoint_dir):

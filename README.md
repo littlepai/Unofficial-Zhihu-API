@@ -14,11 +14,12 @@
 > * conda create -n uf_zhihu python=3.6 jupyter
 > * cd ../Unofficial-Zhihu-API/
 > * activate uf_zhihu
-> * conda install tensorflow==1.2.1
+> * conda install tensorflow==1.14.0
 > * python setup.py install
 
 安装完毕之后再python的site-packages目录下生成ufzh项目（之所以做成一整个包是为了方便以后整合到别的项目）
-说明：之所以在python setup.py install 之前执行conda install tensorflow==1.2.1是因为setup.py 安装的时候不能自动安装，不知道为啥
+说明：之所以在python setup.py install 之前执行conda install tensorflow==1.14.0是因为setup.py 安装的时候不能自动安装，不知道为啥
+再说明：这个项目训练的时候其实使用tensorflow==1.2.1版本训练的，现在都2.0了，发现安装1.14.0的也行
 
 ## 优先体验
 ### 验证码自动识别测试
@@ -29,42 +30,8 @@ import helper
 helper.mark()
 ```
 
-### 调用API获取数据
-```python
-
-ipython
-from ufzh import zhihu
-s=zhihu.Search()
-s.relatedQidByKWord
-java_qs=s.relatedQidByKWord("java") # 查询java相关的话题
-java_q=java_qs.fetchone() # 先获取一部分数据
-java_q #ipython 会打印详细信息
-
-###################################
-comments=s.commentByQid(java_q[0]['qid']) # 针对第一个问题，查找当前问题下的评论信息
-comments_data=comments.fetchone() # 先获取一部分数据
-comments_data #ipython 会打印详细信息，但是信息会很多，后面会补上字段说明
-
-#####################################
-comments_data[0]['author']["name"] # 第一位评论的用户的名字
-url_token=comments_data[0]['author']["url_token"] # 该用户的令牌，zhihu为每一位用户唯一分配
-followers=s.getFollowers(url_token) # 给定用户令牌，获取用户粉丝
-followers_data=followers.fetchone() # 先获取部分数据
-followers_data #打印每一位粉丝的详细信息，字段很多
-```
-
-
-## 扩展
-主要用Unofficial-Zhihu-API进行自动登录，登陆之后获取一个包含登陆信息的requests会话进行 **自定义爬虫。**
-```python
-ipython
-from ufzh import zhihu
-s=zhihu.Zhihu()
-#session是一个requests库的一个会话，使用方法请参考官方教程
-session=s.getSession()
-
-```
-
+## 爬虫部分将不可用，项目将作为学习验证码识别练习项目（缺数据的情况下）
+本来要删了，因为这个项目当初是想用来做爬虫的，但是开发了验证码自动识别之后，就没之后了
 
 ## 从零开始训练验证码识别
 如果你需要学习或者体验 **如何在缺少知乎已标记验证码的情况下，训练验证码识别** ，请访问博客地址: [深度学习与爬虫实例教学](http://www.cnblogs.com/paiandlu/p/8462657.html)

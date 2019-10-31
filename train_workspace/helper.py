@@ -92,3 +92,4 @@ def mark(num=50):
         expression=client.recgImg(img)
         img.save(os.path.join(dirname, expression+".png"))
     print("\n在当前目录下有mark文件夹，里面是刚刚识别的结果，如果有兴趣，可以统计正确率\n")
+    print("{}".format(os.path.join(os.path.dirname(__file__), "mark")))

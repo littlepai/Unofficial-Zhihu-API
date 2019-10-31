@@ -37,7 +37,7 @@ tf.app.flags.DEFINE_float('momentum', 0.9, 'the momentum')
 tf.app.flags.DEFINE_string('train_dir', './imgs/train/', 'the train data dir')
 tf.app.flags.DEFINE_string('val_dir', './imgs/val/', 'the val data dir')
 tf.app.flags.DEFINE_string('infer_dir', './imgs/infer/', 'the infer data dir')
-tf.app.flags.DEFINE_string('log_dir', './log', 'the logging dir')
+# tf.app.flags.DEFINE_string('log_dir', './log', 'the logging dir')
 tf.app.flags.DEFINE_string('mode', 'train', 'train, val or infer')
 tf.app.flags.DEFINE_integer('num_gpus', 1, 'num of gpus')
 

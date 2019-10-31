@@ -3,9 +3,8 @@
 
 #############################################
 # File Name: setup.py
-# Author: xingming
-# Mail: huoxingming@gmail.com
-# Created Time:  2015-12-11 01:25:34 AM
+# Author: littlepai
+# Mail: txgyswh@163.com
 #############################################
 
 
@@ -13,7 +12,7 @@ from setuptools import setup, find_packages
 
 setup(
     name = "ufzh",
-    version = "1.0.0",
+    version = "1.0.1",
     keywords = ("pip", "ufzh"),
     description = "深度学习实现知乎验证码识别",
     long_description = "深度学习实现知乎验证码识别",
@@ -26,5 +25,5 @@ setup(
     include_package_data = True,
     data_files=[('ufzh/checkpoint', ['ufzh/checkpoint/checkpoint', 'ufzh/checkpoint/ocr-model-22001.data-00000-of-00001', 'ufzh/checkpoint/ocr-model-22001.index','ufzh/checkpoint/ocr-model-22001.meta'])],
     platforms = "any",
-    install_requires = ['requests', "bs4", 'tensorflow==1.2.1', 'pillow', 'numpy', 'tqdm']
+    install_requires = ['requests', "bs4", 'tensorflow == 1.14.0 ', 'pillow', 'numpy', 'tqdm']
 )
