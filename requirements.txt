@@ -1,7 +1,7 @@
 requests==2.18.4
 bs4
 tensorflow==1.14.0
-pillow==4.1.1
+pillow==6.2.0
 numpy==1.12.1
 tqdm==4.19.2
 
