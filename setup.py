@@ -25,5 +25,5 @@ setup(
     include_package_data = True,
     data_files=[('ufzh/checkpoint', ['ufzh/checkpoint/checkpoint', 'ufzh/checkpoint/ocr-model-22001.data-00000-of-00001', 'ufzh/checkpoint/ocr-model-22001.index','ufzh/checkpoint/ocr-model-22001.meta'])],
     platforms = "any",
-    install_requires = ['requests', "bs4", 'tensorflow == 1.14.0 ', 'pillow', 'numpy', 'tqdm']
+    install_requires = ['requests', "bs4", 'tensorflow == 2.6.4 ', 'pillow', 'numpy', 'tqdm']
 )
